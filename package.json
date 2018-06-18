@@ -1,0 +1,23 @@
+{
+  "name": "file-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinelnikov-rv/node-file-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sinelnikov-rv/node-file-server/issues"
+  },
+  "homepage": "https://github.com/sinelnikov-rv/node-file-server#readme",
+  "dependencies": {
+    "eslint": "^4.19.1",
+    "npm": "^6.1.0"
+  }
+}
