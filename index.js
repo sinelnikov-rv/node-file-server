@@ -12,7 +12,7 @@ const getFiles = (directory) => {
   fileList.forEach((element) => {
     if (fs.statSync(`${directory}/${element}`).isDirectory()) {
       directoryList.push({ type: 'dir', name: `${element}`, parentDir: `${directory}` });
-      getFiles(`${directory}/${element}`);
+      //getFiles(`${directory}/${element}`);
     } else {
       directoryList.push({ type: 'file', name: `${element}`, parentDir: `${directory}` });
     }
@@ -28,10 +28,11 @@ const requestHandler = (request, response) => {
   const fileList = getFiles(dir);
   response.write('<ul>');
   fileList.forEach((element) => {
-    if (element.parentDir === dir) {
-      response.write(`<li> ${element.name} </li>`);
-    }
+    //if (element.parentDir === dir) {
+      response.write(`<a href=""><li> ${element.name} </li></a>`);
+    //}
   });
+  response.write('</ul>');
   response.end('hello');
 };
 
