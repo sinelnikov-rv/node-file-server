@@ -22,18 +22,24 @@ const getFiles = (directory) => {
 };
 
 const requestHandler = (request, response) => {
-  response.writeHead(200);
-  response.write(`<html><head><title>Directory listing for ${dir} </title><head><body><h1>Directory listing for ${dir}</h1>`);
-  console.log(request.url);
-  const fileList = getFiles(dir);
-  response.write('<ul>');
-  fileList.forEach((element) => {
+  if (request.url === '/upload') {
+    response.end("");
+  } else {
+    response.writeHead(200);
+    response.write(`<html><head><title>Directory listing for ${dir} </title><head><body><h1>Directory listing for ${dir}</h1>`);
+    const fileList = getFiles(dir);
+    response.write('<ul>');
+    fileList.forEach((element) => {
     //if (element.parentDir === dir) {
       response.write(`<a href=""><li> ${element.name} </li></a>`);
     //}
-  });
-  response.write('</ul>');
-  response.end('hello');
+    });
+    response.write('</ul>');
+    response.write('<form action="/upload" enctype="multipart/form-data" method="POST">');
+    response.write('<input type="file" name="file" />');
+    response.write('<input type="submit" value="upload file" />');
+    response.end('</form>');
+  }
 };
 
 const server = http.createServer(requestHandler);
